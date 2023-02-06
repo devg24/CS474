@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{HW1}
+\author{Dev Goyal }
+\date{February 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Question 1}
+
+Base Case:
+
+if $\alpha$ is a proposition p
+\begin{itemize}
+    \item if $\alpha$ is satisfied by v, then let v' be an extension of v which maps p to true so $q_{\alpha}$ is true and $p \iff q_{\alpha}$ is True thus Circuit($\alpha$) is satisfied by v'.
+    \item if Circuit($\alpha$) and $q_{\alpha}$ is satisfied by v then since $p \iff q_{p}$ so p is true and $\alpha$ is satisfied by v' which is an extension of v that maps p to true.
+\end{itemize}
+
+Inductive Case:
+
+if $\alpha$ is a negative of a proposition p
+\begin{itemize}
+    \item if $\alpha$ is satisfied by v, then let v' be an extension of v which maps p to false so, $q_{\alpha}$ is True and $\neg p \iff q_{\alpha}$ is true thus Circuit($\alpha$) is satisfied by v'
+    \item if Circuit($\alpha$) and $q_{\alpha}$ is satisfied by v then since $\neg p \iff q_{p}$ so $\neg p$ is true and $\alpha$ is satisfied by v' which is an extension of v which maps p to false.
+\end{itemize}
+
+if $\alpha$ is a conjunction of $\beta$ and $\gamma$
+
+\begin{itemize}
+    \item if $\alpha$ is satisfied by v, then let v' be an extension that satisfies Circuit($\beta$) and Circuit($\gamma$) so $q_{\beta \cap \gamma}$ are true and $q_\beta$ and $q_\gamma$ are true and hence Circuit($\alpha$) is satisfied by v' 
+    \item if Circuit($\alpha$) and $q_{\alpha}$ is satisfied by v then from the definintion of a circuit, $q_{\beta}$ and $q_\gamma$ are true and hence $\alpha$ is satisfied by v' which is an extension of v that satisfies $\beta$ and $\gamma$.
+\end{itemize}
+
+if $\alpha$ is a disjunction of $\beta$ and $\gamma$
+
+\begin{itemize}
+    \item if $\alpha$ is satisfied by v, then let v' be an extension that satisfies Circuit($\beta$) or Circuit($\gamma$) so $q_{\beta \cup \gamma}$ are true and $q_\beta$ or $q_\gamma$ are true and hence Circuit($\alpha$) is satisfied by v'
+    \item if Circuit($\alpha$) and $q_{\alpha}$ is satisfied by v then from the definintion of a circuit, $q_{\beta}$ or $q_\gamma$ are true and hence $\alpha$ is satisfied by v' which is an extension of v that satisfies $\beta$ or $\gamma$.
+\end{itemize}
+
+Hence the proof is complete and by induction we can say that for every propositional formula $\alpha$,  the formula $q_{\alpha} \cap Circuit(\alpha)$ is satisfied iff $\alpha$ is satisfied by v.
+
+\section{Question 2}
+
+the set of formulas that represent the constraints of the problem are as follows:
+
+\begin{itemize}
+    \item $\forall i \in \{1,2,3. . . .\}, (p_{i,1} \rightarrow \neg (p_{i,2} \cup p_{i,3} \cup p_{i,4}) ) \cap (p_{i,2} \rightarrow \neg (p_{i,1} \cup p_{i,3} \cup p_{i,4}) ) \cap
+    (p_{i,3} \rightarrow \neg (p_{i,2} \cup p_{i,1} \cup p_{i,4}) ) \cap (p_{i,4} \rightarrow \neg (p_{i,2} \cup p_{i,3} \cup p_{i,1}) )$ 
+
+    This ensures that no two students are in the same house.
+
+    \item $\forall (i,j) \in F, \neg(p_{i,1} \cap p_{j,1}) \cap (\neg(p_{i,2} \cap p_{j,2})) \cap \neg(p_{i,3} \cap p_{j,3}) \cap \neg(p_{i,4} \cap p_{j,4}) $
+    
+    This ensures that no two friends are in the same house.
+
+\end{itemize}
+Since the set of formulas is infinite, we need to prove that every finite subset of these formulas has a model. This follows from the assumption that finite undirected graphs whose vertices have $degree \le 3$ are four-colorable, as the graph formed by the friendship relation F is such a graph.
+
+Finally, by the Compactness Theorem of First-Order Logic, the entire set of formulas has a model, and hence it is possible to sort the countably infinite set of students into four houses while avoiding placing any two friends in the same house.
+
+\section{Question 3}
+
+\begin{itemize}
+    \item Let us introduce some notation to model the problem.
+    
+    \begin{itemize}
+        \item let $V \subseteq N$ be the set of vertices of the graph 
+        \item let $E \subseteq V X V$ be the set of edges of the graph
+        \item let $C \subseteq N$ be the set of colors that can be used to color the graph
+        \item let $p_{i,c}$ be the proposition that vertex i is colored with color c
+    \end{itemize}
+
+    The set of constraints that we need to satisfy are as follows:
+
+    \begin{itemize}
+        \item $|C| = 3$ (since we need to have only three colors)
+        \item $\forall (i,j) \in E, (p_{i,c} \rightarrow \neg{p_{j,c}})$ for a color $c \in C$(since no two adjacent vertices can have the same color)
+        \item $\forall i \in V, \exists c \in C, p_{i,c}$ (since every vertex must be colored)
+    \end{itemize}
+
+
+
+
+\end{itemize}
+
+\end{document}
