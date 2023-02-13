@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\title{HW1}
+\author{Dev Goyal }
+\date{February 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+
+We're required to prove ($p \land (p \rightarrow q) \rightarrow q$) using resolution.
+
+We will prove this by showing that the resolution of ($p \land (p \rightarrow q)) \land (\neg q$) is unsatisfiable.
+
+We will now convert the expression to CNF.
+
+\begin{itemize}
+    \item replace $p \rightarrow q $ with $\neg p \lor q$
+    \item the expression is now $(p \land \neg p \lor q) \land \neg q$
+\end{itemize}
+we can now apply resolution to the expression. We see that RHS contains q and LHS contains $\neg q$ so we can apply resolution to get an empty clause. Hence the expression is unsatisfiable.
+and thus the original expression is valid.
+\end{document}
