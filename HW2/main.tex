@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{graphs, quotes}
 
 \title{HW1}
 \author{Dev Goyal }
@@ -9,20 +11,70 @@
 
 \begin{document}
 
+
 \maketitle
 
 \section{Problem 1}
 
 We're required to prove ($p \land (p \rightarrow q) \rightarrow q$) using resolution.
 
-We will prove this by showing that the resolution of ($p \land (p \rightarrow q)) \land (\neg q$) is unsatisfiable.
+We will prove this by showing that the resolution of ($p \land (p \rightarrow q)) \land (\neg q$)[this is the negation of the expression] is unsatisfiable.
 
 We will now convert the expression to CNF.
 
 \begin{itemize}
     \item replace $p \rightarrow q $ with $\neg p \lor q$
-    \item the expression is now $(p \land \neg p \lor q) \land \neg q$
+    \item the expression is now $p \land (\neg p \lor q) \land \neg q$
 \end{itemize}
-we can now apply resolution to the expression. We see that RHS contains q and LHS contains $\neg q$ so we can apply resolution to get an empty clause. Hence the expression is unsatisfiable.
-and thus the original expression is valid.
+we can now apply resolution to the expression. we resolve the last two terms tp get $p \land \neg p$ which is the empty clause thus the negation is unsatisfiable and our original expression is valid 
+
+\section{Problem 2}
+\begin{itemize}
+    \item The CNF is $\{ \{ q, \neg r\}, \{ \neg p, r \},\{ \neg q, r, p\} \{p, q, \neg q \}, \{\neg r, q \}\}$
+    \begin{itemize}
+        \item resolving the first two terms we get: $\{ \{ q, \neg p\},\{ \neg q, r, p\}, \{p, q, \neg q \}, \{\neg r, q \} \} $
+        \item resolving the third term we get: $\{ \{ q, \neg p\},\{ \neg q, r, p\}, \{\neg r, q \} \} $
+        \item resolving first and second term we get: $\{ \{ \neg p, r, p\}, \{\neg r, q \} \} $
+        \item resolving the first term: $\{ \{\neg r, q \} \} $
+        
+        This cannot be resolved further.
+        
+    \end{itemize}
+    
+    \item 
+\end{itemize}
+
+\section{ Problem 3}
+
+the CNF in question 1 was $\{ \{ p\}, \{ \neg p, q \}, \{ \neg q\} \} $[ note this is the negation of the original expression]
+
+% \begin{tikzpicture}
+%     [sibling distance=10em,level distance=6em,
+%     every node/.style={shape=rectangle,draw,align=center}]
+
+%     \node{p}
+%     child { node {q}};
+% \end{tikzpicture}
+
+We can represent this as a tree as follows following the order $p > \neg q > \neg p \lor q$:
+
+\tikz \graph[grow down sep = 1cm, branch right=2cm, nodes={circle, draw}] { "p"  <- {
+    "$\neg q $" [> "T"] <- { "$\neg p \lor q$" [> "T"], "$\neg q$" [> "F"]} ,
+    "$ p $" [> "F"] <- {}
+}};
+
+using this tree we can derive the resolution proof tree as follows:
+
+\tikz \graph[grow down sep = 1cm, branch right=2cm] { "$\{ \}$"  <- {
+    "$ \{ \neg p \} $" [> "T"] <- { "$\{ \neg p, q \}$" [> "T"], "$ \{ \neg q \}$" [> "F"]} ,
+    "$ \{ p \}$" [> "F"] <- {}
+}};
+
+As always, We start from the bottom children and keep resolving the terms until we reach the root. We can see that the root is empty and thus the expression is unsatisfiable.
+
+thus our original expression is valid.
+
+
+
+
 \end{document}
