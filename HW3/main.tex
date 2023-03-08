@@ -120,4 +120,42 @@
 \end{enumerate}
 
 \section{Question 3}
+
+\begin{enumerate}
+    \item let's take the inner formula first and perform quantifier elimination on it:
+    
+    $$\exists y. ((2y > 3x) \land (4y < 8x + 10))$$
+
+    Grouping the equation se we have y with coefficient 1 on one side in every term we get:
+
+    $$\exists y. ((y > \frac{3}{2}x) \land (y < \frac{8x + 10}{4}))$$
+
+    
+    $F_{- \infty}$ formula evaluates to:
+    $$False \land True = False$$
+    similarly $F_{\infty }$ evaluates to:
+    $$True \land False = False$$
+    
+    The terms not involving y are S = $\{\frac{3}{2}x, \frac{8x+10}{4} \}$
+    therefore we now get the quantifier free formula as the follwing disjunction:
+
+    $$\bigvee_{t,t' \in S} F[(t+t')/2//y]$$
+
+    which has the following disjuncts:
+
+    $$\frac{3}{2}x > \frac{3}{2}x \land \frac{3}{2}x < \frac{8x+10}{4}$$
+
+    $$\frac{8x+10}{4} > \frac{3}{2}x \land \frac{8x+10}{4} < \frac{8x+10}{4}$$
+
+    $$\frac{\frac{3}{2}x + \frac{8x+10}{4}}{2} > \frac{3}{2}x \land \frac{\frac{3}{2}x + \frac{8x+10}{4}}{2} < \frac{8x+10}{4}$$
+
+    We can exclude the first two disjuncts since they are always false. So we get the original formula as
+
+    $$\forall x. (\frac{\frac{3}{2}x + \frac{8x+10}{4}}{2} > \frac{3}{2}x \land \frac{\frac{3}{2}x + \frac{8x+10}{4}}{2} < \frac{8x+10}{4})$$
+
+    Now we can perform quantifier elimination on this formula:
+    
+\end{enumerate}
+
+
 \end{document}
