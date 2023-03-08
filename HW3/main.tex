@@ -95,9 +95,29 @@
 
      $$\neg (false \lor false) = true$$
 
-     The link to the Z3 is here:
+     The link to the Z3 is here: \begin{verbatim}
+        https://github.com/devg24/CS474/blob/main/HW3/prob2_parta.smt2
+     \end{verbatim}
 
+    %  new page
+    \newpage
 
-     
+    \item let L = $\{l_1,l_2,l_3,l_4\}$ and R = $\{r_1,r_2,r_3,r_4\}$
+    
+    Semantically the subscript i represents the i'th vertice with there being only 4 vertices.
+
+    An edge from i to j only exists when an interval exists with endpoints $l_i, r_i$ and $l_j, r_j$ repectively.
+
+    the formula $\alpha_g$ basically defines the intervals that have to intersect.
+
+    For intersecting intervals we will employ the shorthand $\{l_i, l_j\} < \{r_i,r_j\}$ to say that every element in the first set is smaller than every element in the second set or:
+
+    $$l_i < r_i \land l_i < r_j \land l_j < r_i \land l_j < r_j$$
+
+    The formula now becomes
+    $$\alpha_G = \{l_1,l_2\} < \{r_1,r_2\} \land \{l_2,l_4\} < \{r_2,r_4\} \land \{l_3,l_4\} < \{r_3, r_4\} \land \{l_1, l_3\} < \{r_1, r_3\}$$
+    $$ \bigwedge_{s ,t \in L}(s < t \lor t < s) \bigwedge_{s,t \in R}(s < t \lor t < s)$$     
 \end{enumerate}
+
+\section{Question 3}
 \end{document}
