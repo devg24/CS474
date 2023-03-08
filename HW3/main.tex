@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+
+\title{HW 3}
+\author{Dev Goyal}
+\date{March 2023}
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+\begin{enumerate}[label=(\alph*)]
+    \item \begin{enumerate}[label=(\roman*)]
+        \item This statement is true for real numbers but false for natural numbers and rational numbers because the only solutions to this statement is $y = +\sqrt{2}$ or $y = -\sqrt{2}$ which is an irrational number and does not exist in the set of natural numbers or rational numbers.
+        \item this statement is true for real numbers and rational numbers but false for natural numbers because $y = -x $ satisfies this contraint and thus y may be negative which is not a natural number. But reals and rational numbers can be negative.
+        \item This statement is true for real numbers and rational numbers and also for natural numbers because $x*y = x + z \implies z = (y-1) * x$ This z exists in the set of real numbers and rational numbers and natural numbers if $\neg(y = 0)$.
+        \item these equations are satisfied by $x = -1 \land y = \sqrt(x)$ This is False for all of natural numbers (because $x = -1$) and rational numbers (because $\sqrt{x}$ is not rational) but real numbers(because $\sqrt{-1}$ is not real).
+    \end{enumerate}
+
+    \item \begin{enumerate}[label=(\roman*)]
+        \item $gt_{N} (x,y) := \exists z . (\neg(z = 0) \land (x = y + z))$
+        \item We define positive(x) whic is only true for reals when x is positive
+         $ positive(x) := \exists z . (\neg(z = 0) \land (z*z = x))$
+
+         $gt_{R} (x,y) := \exists z . (\neg(z = 0) \land (x = y + z) \land positive(z))$
+    \end{enumerate}
+
+    \item one such formula F is $F := \neg (\exists z. (z * z = 2))$
+\end{enumerate}
+
+\section{Question 2}
+\begin{enumerate}[label=(\alph*)]
+    \item We will first perform quantifier elimination on the formula
+    $$\exists w. \ l_1 < w \land w < u_1 \land l_2 < w \land w < u_2 \land w \neq z$$
+    $$\exists w. \ l_1 < w \land w < u_1 \land l_2 < w \land w < u_2 \land (w < z \lor z < w)$$
+    
+    This formula is in form where w is grouped on one side and we can begin quantifier elimination
+
+    goruping elements such that expressions of the form $t < w$ and $w < t$ are grouped together we get:
+
+    $$\exists w. \ (l_1 < w \land l_2 < w \land w < u_1  \land w < u_2 \land w < z) \lor (l_1 < w \land z < w \land l_2 < w \land w < u_1  \land w < u_2)$$
+
+    \textbf{for the first disjunction}: clearly the solution only exists when $\{l_1, l_2\} < \{u_1,u_2, z\}$
+
+    so we get the quantifier eliminated version as 
+
+    $$\bigwedge_{t \in L, t' \in U}(t < t') $$ 
+    
+    where $L = \{l_1, l_2\}$ and $U = \{u_1, u_2, z\}$
+
+    \textbf{for the second disjunction}: clearly the solution only exists when $\{l_1, l_2, z\} < \{u_1,u_2\}$
+
+    so we get the quantifier eliminated version as
+
+    $$\bigwedge_{t \in L', t' \in U'}(t < t') $$ 
+    
+    where $L' = \{l_1, l_2, z\}$ and $U' = \{u_1, u_2\}$
+
+    \textbf{Quantifier Free formula after eliminating w}:
+     $$F(z) := \bigwedge_{t \in L, t' \in U}(t < t') \lor \bigwedge_{t \in L', t' \in U'}(t < t')$$
+     
+     where $L' = \{l_1, l_2, z\}$, $U' = \{u_1, u_2\}$,  $L = \{l_1, l_2\}$ and $U = \{u_1, u_2, z\}$
+
+     We can simplify this further by seeing that both disjunctions contain $\{l_1,l_2\} < \{u_1,u_2\}$
+
+        So we can simplify the formula to:
+
+        $$F(z) := \{l_1, l_2\} < \{u_1, u_2\} \land (\{z\} < \{u_1, u_2\} \lor \{l_1,l_2\} < \{z\})$$
+        
+        For the rest of the proof we will assume $\{l_1,l_2\} < \{u_1,u_2 \} := a$ since it doesn't depend on z
+
+        $$F(z) = a \land (\{z\} < \{u_1, u_2\} \lor \{l_1,l_2\} < \{z\})$$
+     Now we will perform quantifier elimination on the formula 
+
+     $$\forall z ((l_1 < z \land z < u_1 \land l_2 < z \land z < u_2) \implies F(z) ) $$
+
+     $$\neg( \exists z ((l_1 < z \land z < u_1 \land l_2 < z \land z < u_2) \land \neg a \lor \neg(\{z\} < \{u_1, u_2\} \lor \{l_1,l_2\} < \{z\}) )) $$
+
+     Taking the inner formula we get:
+
+     $$\exists z. (l_1 < z \land l_2 < z \land z < u_1 \land z < u_2 \land (\neg a))$$
+     $$\lor$$
+     $$ \exists z. (l_1 < z \land l_2 < z \land z < u_1 \land z < u_2 \land \neg(\{z\} < \{u_1, u_2\} \lor \{l_1,l_2\} < \{z\}))$$
+
+     \textbf{for the first disjunction}:
+     $$\neg a \land \exists z. (l_1 < z \land l_2 < z \land z < u_1 \land z < u_2)$$
+
+     which is a Fallancy because it evaluates to $\neg a \land a = false$
+
+     \textbf{for the second disjunction}:
+
+     This expression will also evaluate to False since the last conjunct has to be false if the earleir conjuncts are true. and this we can see by looking at the quantifier eliminated version of the formula:
+
+     $$\neg (false \lor false) = true$$
+
+     The link to the Z3 is here:
+
+
+     
+\end{enumerate}
+\end{document}
