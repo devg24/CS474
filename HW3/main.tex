@@ -16,7 +16,7 @@
         \item This statement is true for real numbers but false for natural numbers and rational numbers because the only solutions to this statement is $y = +\sqrt{2}$ or $y = -\sqrt{2}$ which is an irrational number and does not exist in the set of natural numbers or rational numbers.
         \item this statement is true for real numbers and rational numbers but false for natural numbers because $y = -x $ satisfies this contraint and thus y may be negative which is not a natural number. But reals and rational numbers can be negative.
         \item This statement is true for real numbers and rational numbers and also for natural numbers because $x*y = x + z \implies z = (y-1) * x$ This z exists in the set of real numbers and rational numbers and natural numbers if $\neg(y = 0)$.
-        \item these equations are satisfied by $x = -1 \land y = \sqrt(x)$ This is False for all of natural numbers (because $x = -1$) and rational numbers (because $\sqrt{x}$ is not rational) but real numbers(because $\sqrt{-1}$ is not real).
+        \item these equations are satisfied by $x = -1 \land y = \sqrt(x)$ This is False for all of natural numbers (because $x = -1$) and rational numbers (because $\sqrt{x}$ is not rational) and real numbers(because $\sqrt{-1}$ is not real).
     \end{enumerate}
 
     \item \begin{enumerate}[label=(\roman*)]
@@ -25,9 +25,15 @@
          $ positive(x) := \exists z . (\neg(z = 0) \land (z*z = x))$
 
          $gt_{R} (x,y) := \exists z . (\neg(z = 0) \land (x = y + z) \land positive(z))$
+
+         \item we can define a similar formula for rational numbers as well:
+         
+         $positive(x) := \exists z \exists c.  x * z * z + c = 0 \land 4 * c + 1 = 0 $
+         
+         $gt_Q(x,y) := \exists z . (\neg(z = 0) \land (x = y + z) \land positive(z)) $ 
     \end{enumerate}
 
-    \item one such formula F is $F := \neg (\exists z. (z * z = 2))$
+    \item one such formula F is $F := \neg (\exists z. (z * z = 1 + 1))$
 \end{enumerate}
 
 \section{Question 2}
