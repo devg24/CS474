@@ -153,8 +153,30 @@
 
     $$\forall x. (\frac{\frac{3}{2}x + \frac{8x+10}{4}}{2} > \frac{3}{2}x \land \frac{\frac{3}{2}x + \frac{8x+10}{4}}{2} < \frac{8x+10}{4})$$
 
-    Now we can perform quantifier elimination on this formula:
-    
+    $$\forall x. (\frac{8x+10}{4} > \frac{3}{2}x \land \frac{3}{2}x < \frac{8x+10}{4})$$
+
+    $$\forall x. (x > -5 \land x > -5)$$
+
+    $$\forall x. (x > -5)$$
+
+    $$\neg \exists \neg (x > -5)$$
+
+    $$\neg \exists x. (x < -5 \lor x = -5)$$
+
+    clearly x = -5 satisfies this formula so we get the quantifier free formula as:
+
+    $$\neg (-5 < -5 \lor -5 = -5)$$
+
+    $$-5 > -5$$
+
+    this semantically evaluates to false which makes sense.
+
+    The link to the Z3 is here: \begin{verbatim}
+        
+    \end{verbatim}
+
+    We can see that the code outputs sat which means the original formula isn not valid which is the outcome we reached by our proof
+
 \end{enumerate}
 
 
