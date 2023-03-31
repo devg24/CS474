@@ -1,0 +1,272 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Midterm}
+\author{Dev Goyal }
+\date{March 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+
+\noindent \textbf{a)} Undecidable and not RE \newline
+
+\noindent \textbf{b)} Decidable \newline
+
+\noindent \textbf{c)} undecidable but in RE\newline
+
+\noindent \textbf{d)} Decidable in P \newline
+
+\noindent \textbf{e)} Decidable in NP \newline
+
+\section{Problem 2}
+
+\noindent \textbf{a)} Consider this formula over ($N$, 0, 1, +, =), where $N$ is the set of natural numbers with constants 0 and 1 and where operators + and = are the usual addition and equality operators . \newline
+
+\begin{equation}
+    (\forall x. \neg (f(x) = x)) \implies \exists x. \exists y. (f(x) = y \land f(y) = x)
+\end{equation}
+Where $f(x) = x + 1$
+
+Then clearly $f(x) = x$ is not true for any $x$ but the implication is never true. So the formula is not valid. \newline
+
+\noindent \textbf{b)} \newline
+
+Universe: \{1, 2\}
+
+P: \{(1, 1), (2, 2)\}
+
+In this model, the premise is true because for all x in the universe, there exists a y such that P(x, y) holds. Specifically, for x = 1, we have y = 1, and for x = 2, we have y = 2.
+
+However, the conclusion is false because there does not exist a y in the universe such that for all x, P(x, y) holds. In fact, there is no such y in the universe because P(1, 2) and P(2, 1) do not hold.
+
+\noindent \textbf{c)} \newline
+
+Universe: \{ 0, 1 \}
+
+f: \{0, 1\} $\rightarrow$ \{0, 1\} such that $f(0) = 1$ and $f(1) = 0$
+
+In this model, the premise is true because for all x in the universe, there exists a y such that f(y) = x. Specifically, for x = 0, we have y = 1, and for x = 1, we have y = 0.
+
+However, the conclusion is false because there does not exist an x in the universe such that f(x) = x. In fact, f(0) = 1 and f(1) = 0, so there are no elements in the universe that satisfy the conclusion.
+
+\noindent \textbf{d)} \newline
+
+Universe: \{ N, 0, 1, +, =\}
+
+f: N $\rightarrow$ N such that $f(x) = x + 1$
+
+the premise is true since each element in the universe maps to a distinct element in the universe. However, the conclusion is false because there is for x = 0 there is no y such that f(y) = 0 in N.
+
+\section{Problem 3}
+
+\noindent \textbf{a)} The propositional formulae for this problem are as follows:
+
+let S = \{1,2,3,4,5\} for the given $\tau$
+\begin{enumerate}
+    \item \begin{align*}\bigwedge_{i,j \in S} p_{ij} \ if \ L(i,j) \ in \ \tau\end{align*}
+    
+    (This ensures that if i likes j then they are in teh same equivalence class)
+    
+    \item \begin{align*}
+        \bigwedge_{i,j \in S} p_{ij} \implies p_{ji} 
+    \end{align*}
+    
+    (this ensures that if i likes j then j likes i and they both are in the same equivalence class)
+
+    \item \begin{align*} \bigwedge_{i \in S} p_{ii} \end{align*}
+    
+    (this ensures that every element is in their own equivalence class)
+
+    \item \begin{align*} \bigwedge_{i,j,k \in S} (p_{ij} \land p_{jk}) \implies p_{ik} \end{align*}
+    
+    (this ensures that if i likes j and j likes k then all of them have to be in the same equivalence class)
+
+    \item \begin{align*} \bigwedge_{i,j \in S} \neg(p_{ij}) \ if \ \neg L(i,j) \in \tau \end{align*}
+    
+    (this ensures that if i does not like j then they are not in the same equivalence class)
+
+    These set C of these 5 propositional formulae is sufficient enough to get an existence of a solution
+
+    \noindent \textbf{b)} 
+    Lemma: let G be a finite substructure of the original problem (N,$\tau$). Let $C_g$ be the smallest subset of C that contains propositions corresponding to the set S which is a subset of N in the substructure G. Then there exists a solution to the substructure G if and only if $C_g$ is satisfiable.
+
+    proof: if there exists a solution to G then giving valuations to propositions in $C_g$ based on that solution satisfies $C_g$ (because of the construction of the constraints). Conversely if $C_g$ is satisfiable then using the 1st and 5th kind of formulas in $C_g$ we get a valid solution to the subproblem G.
+
+    Now consider any finite subset of the constraints C, let's call this finite subset D. it only has a finite number of ids of people involved and thus we can construct an induced substructure of the original problem with the finite subset of Ids and the corresponding set of binary relations, let's call this subproblem k.
+
+    From our assumption in the problem we know that K has a solution, which can be represented as $C_k$ as per our lemma above and also note that D is a subset of $C_k$
+
+    This means that from our lemma , $C_k$ is satisfiable and it follows that D is satisfiable too since D is a subset of $C_k$.
+
+    Since D was an arbitrary finite subset of C, by the compactness theorem we can say that C is satisfiable. Thus there exists a solution over N too.
+
+ \end{enumerate}
+
+
+
+\section{Problem 4}
+
+the given formula is :
+
+$$\forall z \neg ((z < x \lor z < y) \land (x < z \lor y< z))$$
+
+To apply quantifier elimination, we need to write the formula as a negation.
+
+$$\neg \exists z. (z < x \lor z < y) \land (x < z \lor y < z)$$
+
+applying distributive law to the innermost brackets, we get:
+
+$$\neg \exists z. ((z < x \lor z < y) \land x < z) \lor ((z < x \lor z < y) \land y < z)$$
+
+applying distributive law again we get:
+$$\neg \exists z. (z < x \land x < z) \lor (x < z \land z < y) \lor (y < z \land z < x) \lor (z < y \land y < z)$$
+
+$$\neg \exists z. (x < z \land z < y) \lor (y < z \land z < x)$$
+
+taking the inner most formula and distribute the existential quantifier we get: 
+
+$$\exists z. (x < z \land z < y) \lor \exists z. (y < z \land z < x)$$
+
+Applying quantifier elimination we get:
+
+$$ (x < y) \lor (y < x)$$
+
+negating this formula to get the original formula we get:
+
+$$\neg (x < y) \land \neg (y < x)$$
+
+which is the quantifier elimination of the given formula.
+
+\section{Problem 5}
+
+We are given the following formula:
+
+$$\forall x. 5 \leq x + 2y \lor x + 3y \leq 10 $$
+
+To apply quantifier elimination, we need to write the formula as a negation.
+
+$$\neg \exists x. x+2y < 5 \land 10 < x+3y $$
+
+taking the inner most formula
+
+$$\exists x.  x+2y < 5 \land 10 < x+3y $$
+
+Grouping x on one side we get:
+
+$$\exists x. (x < 5 - 2y \land 10 -3y < x)$$
+
+We can trivially see that $F_{-\infty}$ and $F_{\infty}$ evaluate to false
+
+Thus now we need to look at terms not involving x which are S = \{5-2y, 10-3y\}
+
+So the formula is equivalent to:
+\begin{align*}
+    \bigvee_{t,t' \in S} F_3(t+t'/2 // x)
+\end{align*}
+
+which gives the following disjuncts:
+
+$$5-2y < 5-2y \land 10-3y < 5-2y$$
+
+$$10-3y < 5-2y \land 10-3y < 10-3y$$
+
+$$15 - 5y < 10-4y \land 15-5y < 20-6y$$
+
+$$5 < y \land y < 5$$
+
+Which logically evaluates to false.
+
+Now we need to negate this formula and thus our original expression is indeed True.
+
+
+\noindent Note: here we have used subtraction and arithmetic operations which are a trivial extension of the given operation +.
+
+\section{Problem 6}
+\noindent \textbf{a)} $$\Phi_1 \equiv x > s(s(0)) \land x < s(s(s(s(0))))$$
+$$\Phi_2 \equiv x < s(s(0)) \lor x > s(s(s(s(0))))$$
+
+\noindent \textbf{b)}
+
+We will prove this by induction on the structure of $\Phi$
+
+Base case: if $\Phi (x)$ is an atomic formula then either S is a singleton set or S is the complement of a singleton set. In either case, the claim holds.
+
+Inductive step: let $\Phi (x)$ be a formula of the form $\neg \Phi_1(x)$ or $\Phi_1(x) \lor \Phi_2(x)$ where $\Phi_1, \Phi_2$ are quantifier free formulae.
+
+Case 1: $\Phi (x)$ is of the form $\neg \Phi_1(x)$
+
+From our Inductive hypothesis $\Phi_1(x)$ defines a set S such that S is either finite set or the complement of a finite set. Since $\Phi(x)$ is the negation of $\Phi_1(x)$ it will also define a set S' such that S' is either finite set or the complement of a finite set S. Thus the claim holds trivially.
+
+Case 2: $\Phi (x)$ is of the form $\Phi_1(x) \lor \Phi_2(x)$
+
+if S is defined by $\Phi$ then it is the union of S1 and S2 where S1 is defined by $\Phi_1$ and S2 is defined by $\Phi_2$.
+
+We get 4 subcases with S1, S2 being finite or complement of a finite set
+
+\begin{enumerate}
+    \item S1 is finite and S2 is finite
+    \item S1 is finite and S2 is complement of a finite set
+    \item S1 is complement of a finite set and S2 is finite
+    \item S1 is complement of a finite set and S2 is complement of a finite set
+\end{enumerate}
+
+For cases 2 and 3:
+
+Since one of the set is the complement of a finite set, the union of the two sets is a complement of a finite set. Thus the claim holds.
+
+For case 1:
+
+Since both the sets are finite, the union of the two sets is also finite. Thus the claim holds.
+
+For case 4:
+
+Since both the sets are the complement of a finite set, the union of the two sets is also the complement of a finite set. Thus the claim holds.
+
+Therefore, by structural induction, we have shown that for any quantifier-free formula $\Phi (x)$, if S is the set defined by $\Phi$, then S is finite or N $\backslash$ S is finite.
+
+\noindent \textbf{c)} Any formula $\Phi(x)$ inL is either quantifier free or a boolean combination of quantifier free formulae. 
+
+If $\Phi(x)$ is quantifier free then it defines a set S which is either finite or the complement of a finite set. Thus the claim holds directly from part B.
+
+If $\Phi(x)$ is a boolean combination of quantifier free formulae then we get multiple cases:
+
+\begin{enumerate}
+    \item $\Phi(x)$ is of the form $\neg \Phi_1(x)$
+    \item $\Phi(x)$ is of the form $\Phi_1(x) \lor \Phi_2(x)$
+    \item $\Phi(x)$ is of the form $\Phi_1(x) \land \Phi_2(x)$
+    \item $\Phi(x)$ is of the form $\exists y. \Phi_1(x,y)$
+    \item  $\Phi(x)$ is of the form $\forall y. \Phi_1(x,y)$
+\end{enumerate}
+
+We can prove the claim for each of these cases by induction on the structure of $\Phi$.
+
+Base case: if $\Phi (x)$ is an atomic formula then either S is a singleton set or S is the complement of a singleton set. In either case, the claim holds.
+
+
+
+For the first three cases we can proceed similar to part B
+
+For Case 4:
+
+S is defined by the union over all elements y in N of the sets defined by $\Phi 1(x,y)$. By the inductive hypothesis, each of these sets is either finite or has a finite complement. Thus, their union is either finite or has a finite complement. Therefore, S or its complement is finite.
+
+For Case 5:
+
+Similar to case 4
+
+Thus, we have shown that for any formula $\Phi (x)$ in the sublogic L of first-order logic over (N, 0, s, <, =) with a single free variable x, the set S defined by $\Phi(x)$ is either finite or its complement is finite.
+
+\noindent \textbf{d)} Suppose, for the sake of contradiction, that there exists a formula $\Phi (x)$ (possibly with quantification but with one free variable x) that defines the set of even numbers.
+
+Let S be the set of even numbers, defined by $\Phi (x)$. Note that the formula $\lambda (x) \equiv \neg \Phi (s(x))$ defines the set of odd numbers. That is, $S' = \{n \in N : \neg \Phi (s(n)) \}$ is the set of odd numbers.
+
+Now, consider the formula $\alpha (x) \equiv \Phi (x) \lor \lambda(x)$. By construction, S and S' are complementary subsets of N, i.e., $S = N \backslash S'$. Therefore, $\alpha(x)$ defines the whole set N.
+
+However, this is a contradiction because by part (b) of the problem, we know that the set defined by any formula in first-order logic over (N, 0, s, <, =) is either finite or its complement is finite. Since N is infinite, neither S nor its complement N \ S can be finite, so $\alpha(x)$ cannot define the set N.
+
+Therefore, even-ness is not definable in the full first-order logic over (N, 0, s, <, =).
+\end{document}
