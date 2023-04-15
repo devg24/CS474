@@ -1,0 +1,47 @@
+% make a template 
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\title{HW4}
+\author{Dev Goyal}
+\date{April 2023}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+\noindent \textbf{Task 1}: \newline
+\begin {equation}
+\begin{split}
+    \varphi (r,s) = (\forall r',s'. \ (r*(90*s + 20*(1-s)) + (1-r)*(30*s + 60*(1-s)) \\ \geq r'*(90*s + 20*(1-s)) + (1-r')*(30*s + 60*(1-s))) \\ 
+    \land (s*(r*10 + 70 * (1-r)) + (1-s)*(r*80 + (1-r)*40 \\ \geq s'*(r*10 + 70 * (1-r)) + (1-s')*(r*80 + (1-r)*40)))\\ \land (r \geq 0) \land (s \geq 0) \land (r \leq 1) \land (s \leq 1) \land (r' \geq 0) \land (s' \geq 0) \land (r' \leq 1) \land (s' \leq 1))
+\end{split}
+\end {equation}
+
+\noindent \textbf{Task 2}: \newline
+
+The code outputs sat and gives the equilibrium as r = 0.3 and s = 0.5.
+
+\noindent \textbf{Task 3}: \newline
+
+Let r,s be mixed strategies for each player and let F,B denote two outcomes. This is to say that player 1 chooses f with probability r and b with probability 1-r and player 2 chooses f with probability s and b with probability 1-s. let $p_{ff}$ denote the payoff for player 1 when both players choose f and $p_{fb}$ denote the payoff for player 1 when player 1 chooses f and player 2 chooses b. Let $p_{bf}$ denote the payoff for player 1 when player 1 chooses b and player 2 chooses f and $p_{bb}$ denote the payoff for player 1 when both players choose b. Let $q_{ff}$ denote the payoff for player 2 when both players choose f and $q_{fb}$ denote the payoff for player 2 when player 1 chooses f and player 2 chooses b. Let $q_{bf}$ denote the payoff for player 2 when player 1 chooses b and player 2 chooses f and $q_{bb}$ denote the payoff for player 2 when both players choose b.:
+
+\begin {equation}
+\begin{split}
+    \psi \equiv \exists r,s . \forall p_{ff}, p_{fb}, p_{bf}, p_{bb}, q_{ff}, q_{fb}, q_{bf}, q_{bb}, r', s' \\ 
+    (r*(p_{ff}*s + p_{fb}*(1-s)) + (1-r)*(p_{bf}*s + p_{bb}*(1-s)) \\ \geq r'*(p_{ff}*s + p_{fb}*(1-s)) + (1-r')*(p_{bf}*s + p_{bb}*(1-s))) \\ 
+    \land (s*(r*q_{ff} + q_{fb} * (1-r)) + (1-s)*(r*q_{bf} + (1-r)*q_{bb} \\ \geq s'*(r*q_{ff} + q_{fb} * (1-r)) + (1-s')*(r*q_{bf} + (1-r)*q_{bb})))\\ \land (r \geq 0) \land (s \geq 0) \land (r \leq 1) \land (s \leq 1) \land (r' \geq 0) \land (s' \geq 0) \land (r' \leq 1) \land (s' \leq 1)
+\end{split}
+\end {equation}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
