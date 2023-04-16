@@ -39,6 +39,45 @@ Let r,s be mixed strategies for each player and let F,B denote two outcomes. Thi
 the link for the Z3 code is: https://github.com/devg24/CS474/tree/main/HW4
 
 
+\section*{Problem 2}
+
+The set of terms T is:
+
+\{a, f(a), g(a), f(g(a)), f(f(a)), f(f(f(a)))\}
+
+the set of equalities E is:
+
+\{ (f(f(f(a))), f(a)), (f(a),g(a)), (f(g(a)), a)\}
+
+the set of inequalities I is:
+
+\{(a,f(a))\}
+
+We start with the equivalence relation:
+
+\{ \{a\}, \{f(a)\}, \{g(a)\}, \{f(g(a))\}, \{f(f(a))\}, \{f(f(f(a)))\} \}
+
+since f(a) and g(a) are equal, we can merge the sets:
+
+\{ \{a\}, \{f(a), g(a)\}, \{f(g(a))\}, \{f(f(a))\}, \{f(f(f(a)))\} \}
+
+since f(g(a)) and a are equal, we can merge the sets:
+
+\{ \{a, f(g(a))\}, \{f(a), g(a)\}, \{f(f(a))\}, \{f(f(f(a)))\} \}
+
+since f(f(f(a))) and f(a) are equal, we can merge the sets:
+
+\{ \{a, f(g(a))\}, \{f(a), g(a), f(f(f(a)))\}, \{f(f(a))\} \}
+
+since f(a) and g(a) are in the same equivalence class, we have to merge the equivalence class of f(f(a)) and f(g(a)):
+
+\{ \{a, f(g(a)), f(f(a))\}, \{f(a), g(a), f(f(f(a)))\} \}
+
+since f(f(a)) and g(a) are in T so we have to merge f(f(f(a))) and f(g(a)) which yields the following equivalence relation:
+
+\{ \{a, f(g(a)), f(f(a)), f(f(f(a))), f(a), g(a)\} \}
+
+since a and f(a)  are in I so this means that the model is unsatisfiable.
 
 
 \end{document}

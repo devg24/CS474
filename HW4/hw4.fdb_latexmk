@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1681602166 "/Users/devgoyal/Desktop/CS474/HW4/hw4.tex" "hw4.pdf" "hw4" 1681602167
-  "/Users/devgoyal/Desktop/CS474/HW4/hw4.tex" 1681602166 2489 7eeb764f127423384089759d2eb4ccf2 ""
+["pdflatex"] 1681611005 "/Users/devgoyal/Desktop/CS474/HW4/hw4.tex" "hw4.pdf" "hw4" 1681611006
+  "/Users/devgoyal/Desktop/CS474/HW4/hw4.tex" 1681611005 3630 aab1d629d97709ecbd14615ab75463cf ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -29,14 +29,15 @@
   "/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsopn.sty" 1636758526 4128 8eea906621b6639f7ba476a472036bbe ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty" 1636758526 2444 926f379cc60fcf0c6e3fee2223b4370d ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls" 1636758526 20144 8a7de377ae7a11ee924a7499611f5a9d ""
+  "/usr/local/texlive/2022/texmf-dist/tex/latex/base/omscmr.fd" 1622581934 2469 ed49302eacbaebdd899d39dedcd25393 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/base/size12.clo" 1636758526 8449 bc7344e882df4d7e51c046514dee83e4 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1644269979 29921 d0acc05a38bd4aa3af2017f0b7c137ce ""
   "/usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf" 1646502317 40171 cdab547de63d26590bebb3baff566530 ""
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1656816559 2826429 2727a1e6b840df570fc4aceaf3a738e7 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "hw4.aux" 1681602166 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "hw4.tex" 1681602166 2489 7eeb764f127423384089759d2eb4ccf2 ""
+  "hw4.aux" 1681611006 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "hw4.tex" 1681611005 3630 aab1d629d97709ecbd14615ab75463cf ""
   (generated)
   "hw4.aux"
   "hw4.log"
