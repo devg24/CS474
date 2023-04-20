@@ -80,6 +80,188 @@ since f(f(a)) and g(a) are in T so we have to merge f(f(f(a))) and f(g(a)) which
 since a and f(a)  are in I so this means that the model is unsatisfiable.
 
 
+\section*{Problem 3}
+\noindent Task 1:
+
+The formula is :
+
+\begin {equation}
+\varphi : \forall e'. ((\forall x. (f(x,e') = x \land f(e',x) = x) \implies (e' = e)))
+\end{equation}
+
+following the steps in the book by bringing the formula to a prenex form and then negating it we get:
+
+\begin {equation}
+\neg \varphi: \exists e'. \forall x (f(x,e') = x \land f(e',x) = x \land \neg (e' = e))
+\end{equation}
+
+now skolemizing by replacing the quantified variable e' with a new constant c we get:
+
+\begin {equation}
+\forall x. (f(x,c) = x \land f(c,x) = x \land \neg (c = e))
+\end {equation}
+
+The four universal formulae we get are now :
+\begin{enumerate}
+    \item $\forall x,y,z. f(f(x,y),z) = f(x,f(y,z))$
+   
+    \item $\forall x. f(x,e) = x \land f(e,x) = x$
+
+    \item $\forall x. f(x , g(x)) = e \land f(g(x),x) = e$
+
+    \item $\forall x. (f(x,c) = x \land f(c,x) = x \land \neg (c = e))$
+\end{enumerate}
+
+instantiating terms of depth 0 we get the following formulae:
+\begin{enumerate}
+    \item $f(f(e,e),e) = f(e,f(e,e))$
+    \item $f(f(c,e),e) = f(c,f(e,e))$
+    \item $f(f(e,c),e) = f(e,f(c,e))$
+    \item $f(f(c,c),e) = f(c,f(c,e))$
+    \item $f(f(e,e),c) = f(e,f(e,c))$
+    \item $f(f(c,e),c) = f(c,f(e,c))$
+    \item $f(f(e,c),c) = f(e,f(c,c))$
+    \item $f(f(c,c),c) = f(c,f(c,c))$
+    \item $f(e,e) = e \land f(e,e) = e$
+    \item $f(c,e) = c \land f(e,c) = c$
+    \item $f(e , g(e)) = e \land f(g(e),e) = e$
+    \item $f(c , g(c)) = e \land f(g(c),c) = e$
+    \item $(f(e,c) = e \land f(c,e) = e \land \neg (c = e))$
+    \item $(f(c,c) = c \land f(c,c) = c \land \neg (c = e))$
+\end{enumerate}
+
+\noindent Task 2:
+
+The formula is :
+
+\begin {equation}
+\varphi : \forall x, y. (f(x,y) = e \land f(y,x) = e) \implies (y = g(x))
+\end {equation}
+
+where g(x) is the inverse function.
+
+negating the above and skolemizing using two new constant symbol c and d gives:
+
+$$(f(c,d) = e \land f(d,c) = e) \land \neg(d = g(c))$$
+
+The four universal formulae we get are now :
+
+\begin{enumerate}
+    \item $\forall x,y,z. f(f(x,y),z) = f(x,f(y,z))$
+    \item $\forall x. f(x,e) = x \land f(e,x) = x$
+    \item $\forall x. f(x , g(x)) = e \land f(g(x),x) = e$
+    \item $(f(c,d) = e \land f(d,c) = e) \land \neg(d = g(c))$
+\end{enumerate}
+
+instantiating terms of depth 0 we get the following formulae:
+
+\begin{enumerate}
+    \item Substituting e for x, e for y, and e for z:
+    $f(f(e,e),e) = f(e,f(e,e))$
+    
+    \item Substituting e for x, e for y, and c for z:
+    $f(f(e,e),c) = f(e,f(e,c))$
+    
+    \item Substituting e for x, e for y, and d for z:
+    $f(f(e,e),d) = f(e,f(e,d))$
+    
+    \item Substituting e for x, c for y, and e for z:
+    $f(f(e,c),e) = f(e,f(c,e))$
+    
+    \item Substituting e for x, c for y, and c for z:
+    $f(f(e,c),c) = f(e,f(c,c))$
+    
+    \item Substituting e for x, c for y, and d for z:
+    $f(f(e,c),d) = f(e,f(c,d))$
+    
+    \item Substituting e for x, d for y, and e for z:
+    $f(f(e,d),e) = f(e,f(d,e))$
+    
+    \item Substituting e for x, d for y, and c for z:
+    $f(f(e,d),c) = f(e,f(d,c))$
+    
+    \item Substituting e for x, d for y, and d for z:
+    $f(f(e,d),d) = f(e,f(d,d))$
+    
+    \item Substituting c for x, e for y, and e for z:
+    $f(f(c,e),e) = f(c,f(e,e))$
+    
+    \item Substituting c for x, e for y, and c for z:
+    $f(f(c,e),c) = f(c,f(e,c))$
+    
+    \item Substituting c for x, e for y, and d for z:
+    $f(f(c,e),d) = f(c,f(e,d))$
+    
+    \item Substituting c for x, c for y, and e for z:
+    $f(f(c,c),e) = f(c,f(c,e))$
+    
+    \item Substituting c for x, c for y, and c for z:
+    $f(f(c,c),c) = f(c,f(c,c))$
+    
+    \item Substituting c for x, c for y, and d for z:
+    $f(f(c,c),d) = f(c,f(c,d))$
+    
+    \item Substituting c for x, d for y, and e for z:
+    $f(f(c,d),e) = f(c,f(d,e))$
+    
+    \item Substituting c for x, d for y, and c for z:
+    $f(f(c,d),c) = f(c,f(d,c))$
+    
+    \item Substituting c for x, d for y, and d for z:
+    $f(f(c,d),d) = f(c,f(d,d))$
+    
+    \item Substituting d for x, e for y, and e for z:
+    $f(f(d,e),e) = f(d,f(e,e))$
+    
+    \item Substituting d for x, e for y, and c for z:
+    $f(f(d,e),c) = f(d,f(e,c))$
+    
+    \item Substituting d for x, e for y, and d for z:
+    $f(f(d,e),d) = f(d,f(e,d))$
+    
+    \item Substituting d for x, c for y, and e for z:
+    $f(f(d,c),e) = f(d,f(c,e))$
+    
+    \item Substituting d for x, c for y, and c for z:
+    $f(f(d,c),c) = f(d,f(c,c))$
+    
+    \item Substituting d for x, c for y, and d for z:
+    $f(f(d,c),d) = f(d,f(c,d))$
+    
+    \item Substituting d for x, d for y, and e for z:
+    $f(f(d,d),e) = f(d,f(d,e))$
+
+    \item Substituting d for x, d for y, and c for z:
+    $f(f(d,d),c) = f(d,f(d,c))$
+
+    \item Substituting d for x, d for y, and d for z:
+    $f(f(d,d),d) = f(d,f(d,d))$
+
+    \item Substituting e for x:
+    $f(e,e) = e \land f(e,e) = e$
+    
+    \item Substituting c for x:
+    $f(c,e) = c \land f(e,c) = c$
+    
+    \item Substituting d for x:
+    $f(d,e) = d \land f(e,d) = d$
+    
+    \item Substituting e for x:
+    $f(e, g(e)) = e \land f(g(e),e) = e$
+
+    \item Substituting c for x:
+    $f(c, g(c)) = e \land f(g(c),c) = e$
+
+    \item Substituting d for x:
+    $f(d, g(d)) = e \land f(g(d),d) = e$
+
+    \item $(f(c,d) = e \land f(d,c) = e) \land \neg(d = g(c))$
+    
+\end{enumerate}
+
+
+
 \end{document}
+
 
 
