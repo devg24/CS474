@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\title{Homework 5}
+\author{Dev Goyal}
+
+\begin{document}
+\maketitle
+\section{Problem 1}
+
+\subsection{Task 1}
+
+To prove this we need to show that if $X \subseteq Y$ then $f(X) \subseteq f(Y)$ 
+
+let $x \in f(X)$ This means that x is either 2 or 3, or there exists y such that $y - 2 \in X $or $y - 3 \in X$ and x = y.
+
+Case 1:  when x = 2 or x = 3. Then x is in f(Y) since 2 and 3 are always in f(Y).
+
+Case 2: $\exists y. (y - 2 \in X \lor y-3 \in X )\land x = y$
+
+since x = y  and $X \subseteq Y$ then $y - 2 \in Y$ or $y - 3 \in Y$.
+
+which means $y \in f(Y)$ and because $x = y$ then $x \in f(Y)$
+
+since we staretd from an arbitrary element of $f(X)$ and showed that it is in $f(Y)$ then $f(X) \subseteq f(Y)$
+
+hence the f is monotonic.
+
+\subsection{Task 2}
+
+to define the set S* corresponding to the LFP. We first start with the empty set $S_0$
+
+$$S_0 = \{ \}$$
+    
+    then we apply the function f to it to get $S_1$
+
+$$S_1 = f(S_0) = \{2,3\}$$
+
+    then we apply the function f to it to get $S_2$
+
+    $$ S_2 = f(S_1) = \{2,3,4,5\}$$
+
+    then we apply the function f to it to get $S_3$
+
+and we can continue this process to get the set $S_*$
+
+$$S^* = \{2,3,4,5,6,7,8,9,10,11,12,13,14,15,16.....\} = N $$
+
+
+\section{Question 2}
+
+\subsection{Task 1}
+$\varphi_1 = \forall i (l_a(i) \implies (\exists j succ(i) = j \land l_b(j))) \land \forall i (\neg l_a(i) \implies l_b(i)) \land \exists i. (first(i) \land l_a(i))$
+
+This formula says that every a is followed by a b and we cannot have a b without an a(to prevent other symbols).
+
+\subsection{Task 2}
+
+$\varphi_2(x,y) = \exists P (P(x) \land \neg(P(y)) \land \forall z(P(z) \implies z=x \lor (\exists u,v (succ(u) = z) \land \neg(u = y) \land succ(v) = u \land \neg(P(v)))))$
+
+This formula states that there exists a set P that contains x but not y, such that every position in P is either x or a position that can be reached from x by a finite sequence of successor operations, excluding y.
+
+\subsection{Task 3}
+
+$\varphi_2(x) = l_a(x) \land \forall i (\varphi_2(x,i) \lor x = i \implies (l_a(i) \implies (\exists j succ(i) = j \land l_b(j))) \land \forall i (\neg l_a(i) \implies l_b(i)))$
+
+Basically this formula says that the x should be a and the formula in task 1 should hold true for all positions $i >= x.$
+
+\section{Question 3}
+
+\subsection{Task 1}
+
+the given literals are:
+$$\varphi: y \leq x, x \leq y, f(y) = f(7) , x \leq 5$$
+
+applying transformation 1 to the third literal we get 2 formulae:
+
+$\Sigma_1 - formula:$
+
+$$y \leq x \land x\leq y \land x \leq 5 \land w_1 = 7$$
+
+$\Sigma_2 - formula:$
+
+$$f(y) = f(w1)$$
+
+With $\{y , w_1\}$ being the shared variable
+
+\subsection{Task 2}
+
+for the first formula the arrangement is 
+$$ x = y \land w_1 = 7 \land x \leq 5$$
+
+one satisfying assignment is $\{y = 5, x = 5, w_1 = 7\}$(note this works for any value of x and y less than or equal to 5)
+
+for the second formula  the arrangement is
+$$f(y) = f(w_1)$$
+
+one satisfying assignment is $\{y = 5, w_1 = 7\}$ with f being the function that maps every element to 1.
+
+\subsection{Task 3}
+
+from these two models we get the following model for the original formula:
+
+$$\{y = 5, x = 5, w_1 = 7\}$$ with f being the function that maps every element to 1.
+
+
+
+
+
+\end{document}
